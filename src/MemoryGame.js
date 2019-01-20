@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
 
-const IMAGES = ["cat", "cat", "dog", "dog", "horse", "horse", "pig",
-  "pig", "snake", "snake", "fish", "fish"];
+const IMAGES = ["https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949",
+  "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098"];
+
+// const IMAGE_TEST = [{name: "cheetos", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false}
+
+//   ]
+
+// const image_links = objArray.map(IMAGE_TEST => IMAGE_TEST.imagelink);
 
 class MemoryGame extends Component {
   constructor(props) {
@@ -14,9 +20,16 @@ class MemoryGame extends Component {
       selected: [], // indexes which have been selected
       correct: [] // indexes which have been guessed correctly
     };
+    console.log(this.state);
+    
+    // this.state = { 
+    //   cards: shuffleArray(IMAGES_TEST.slice()),
+    //   selected: [], // indexes which have been selected
+    //   correct: [] // indexes which have been guessed correctly
+    // }
   }
 
-  // Don't need a componentWillMount
+
 
   onCardClick(clickedIndex) {
     const { selected, cards, correct } = this.state;
@@ -47,7 +60,7 @@ class MemoryGame extends Component {
     const { correct, selected, cards } = this.state;
     return (
       <div>
-        <h1>Memory Game</h1>
+        <h1>check your cheetos</h1>
         <div className="mui-panel wrapper">
           {cards.map((image, i) => (
             <MemoryCard
@@ -78,8 +91,8 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect }) => (
   >
     <img
       style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }}
-      src={"./" + image + ".jpg"}
-      srcSet={"./" + image + "_lrg.jpg 1000w"}
+      src={image}
+      srcSet={image}
       alt={image}
     />
   </div>
