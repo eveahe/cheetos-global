@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
 
-const IMAGES = ["https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949",
-  "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098"];
+// const IMAGES = ["https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949",
+//   "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098"];
 
-// const IMAGE_TEST = [{name: "cheetos", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false}
+const IMAGE_TEST = [
+      {name: "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
+      {name: "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
+      {name: "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
+      {name: "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
+      {name: "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
+      {name: "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
+      {name: "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
+      {name: "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
+      {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
+      {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
+      {name: "erdnusseflips", country: "Germany", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", selected: false, correct: false},
+      {name: "erdnusseflips", country: "Germany", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", selected: false, correct: false}
+  ]
 
-//   ]
-
-// const image_links = objArray.map(IMAGE_TEST => IMAGE_TEST.imagelink);
+const imageLinks = IMAGE_TEST.map(snack => snack.imagelink);
+console.log(imageLinks);
+const imageCountries = IMAGE_TEST.map(snack => snack.country);
+console.log(imageCountries);
 
 class MemoryGame extends Component {
   constructor(props) {
@@ -16,17 +30,12 @@ class MemoryGame extends Component {
 
     // You can simplify your state a lot
     this.state = {
-      cards: shuffleArray(IMAGES.slice()),
+      cards: shuffleArray(imageLinks.slice()),
       selected: [], // indexes which have been selected
       correct: [] // indexes which have been guessed correctly
     };
-    console.log(this.state);
+    // console.log(this.state);
     
-    // this.state = { 
-    //   cards: shuffleArray(IMAGES_TEST.slice()),
-    //   selected: [], // indexes which have been selected
-    //   correct: [] // indexes which have been guessed correctly
-    // }
   }
 
 
@@ -66,6 +75,7 @@ class MemoryGame extends Component {
             <MemoryCard
               key={i}
               image={image}
+              countryName={imageCountries[i]}
               isCorrect={correct.includes(i)}
               isSelected={selected.includes(i)}
               onSelect={() => this.onCardClick(i)}
@@ -78,7 +88,7 @@ class MemoryGame extends Component {
 }
 
 // Extracted into it's own component
-const MemoryCard = ({ image, isSelected, isCorrect, onSelect }) => (
+const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => (
   <div
     className="modal mui-panel"
     onClick={() => {
@@ -93,7 +103,7 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect }) => (
       style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }}
       src={image}
       srcSet={image}
-      alt={image}
+      alt={countryName}
     />
   </div>
 );
