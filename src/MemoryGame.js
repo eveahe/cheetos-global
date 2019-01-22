@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
+import data from "./data.json";
 
-// const IMAGES = ["https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949",
-//   "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098"];
+
 
 const IMAGE_TEST = [
-      {name: "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
-      {name: "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
-      {name: "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
-      {name: "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
-      {name: "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
-      {name: "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
-      {name: "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
+      {"name": "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
+      {"name": "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
+      {"name": "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
+      {"name": "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
+      {"name": "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
+      {"name": "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
+      {"name": "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
       {name: "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
       {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
       {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
@@ -30,13 +30,16 @@ class MemoryGame extends Component {
 
     // You can simplify your state a lot
     this.state = {
-      cards: shuffleArray(imageLinks.slice()),
+      // cards: shuffleArray(imageLinks.slice()),
+      cards: data,
       selected: [], // indexes which have been selected
-      correct: [] // indexes which have been guessed correctly
+      correct: [], // indexes which have been guessed correctly
+      data: null
     };
-    // console.log(this.state);
+    // console.log(this.props);
     
   }
+
 
 
 
@@ -74,8 +77,8 @@ class MemoryGame extends Component {
           {cards.map((image, i) => (
             <MemoryCard
               key={i}
-              image={image}
-              countryName={imageCountries[i]}
+              image={imageLinks[i]}
+              countryName={cards[i].country}
               isCorrect={correct.includes(i)}
               isSelected={selected.includes(i)}
               onSelect={() => this.onCardClick(i)}
