@@ -39,6 +39,12 @@ img {
       flex-wrap: wrap;
 }
 
+.nametest{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
 @media all and (min-width: 1000px) {
   .modal {
     width: 200px;
