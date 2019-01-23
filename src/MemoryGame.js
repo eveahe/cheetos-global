@@ -86,12 +86,12 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => 
     }}
   >
     <img
-      style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }}
+      style={{visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }}
       src={image}
       srcSet={image}
       alt={countryName}
     />
-    <p style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }} class="nametest">Test!</p>
+    <p style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }} className="nametest">Test!</p>
   </div>
 );
 
