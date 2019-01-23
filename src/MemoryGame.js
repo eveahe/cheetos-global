@@ -1,28 +1,9 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
+
+// import the cards from a json list
 import data from "./data.json";
 
-
-
-const IMAGE_TEST = [
-      {"name": "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
-      {"name": "kurkure", country: "India", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fkurkure-tomato.jpg?1547975036127", selected: false, correct: false},
-      {"name": "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
-      {"name": "flaminghot", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheetosflaminghot.jpg?1547911084461", selected: false, correct: false},
-      {"name": "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
-      {"name": "cheesepuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fcheesepuffs.jpeg?1547910757501", selected: false, correct: false},
-      {"name": "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
-      {name: "wotsits", country: "UK", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fwotsits.jpeg?1547910999949", selected: false, correct: false},
-      {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
-      {name: "goldenpuffs", country: "USA", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Fgoldenflakepuffs.jpg?1547910999539", selected: false, correct: false},
-      {name: "erdnusseflips", country: "Germany", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", selected: false, correct: false},
-      {name: "erdnusseflips", country: "Germany", imagelink: "https://cdn.glitch.com/1172cc4c-f207-4261-8964-035dd57ee8d0%2Ferdnusseflips.jpg?1547911121098", selected: false, correct: false}
-  ]
-
-const imageLinks = IMAGE_TEST.map(snack => snack.imagelink);
-console.log(imageLinks);
-const imageCountries = IMAGE_TEST.map(snack => snack.country);
-console.log(imageCountries);
 
 class MemoryGame extends Component {
   constructor(props) {
@@ -31,12 +12,11 @@ class MemoryGame extends Component {
     // You can simplify your state a lot
     this.state = {
       // cards: shuffleArray(imageLinks.slice()),
-      cards: data,
+      cards: shuffleArray(data),
       selected: [], // indexes which have been selected
       correct: [], // indexes which have been guessed correctly
       data: null
     };
-    // console.log(this.props);
     
   }
 
@@ -44,14 +24,17 @@ class MemoryGame extends Component {
 
 
   onCardClick(clickedIndex) {
-    const { selected, cards, correct } = this.state;
+    //var countryCheck  = cards[clickedIndex].country
+    const { selected, cards, correct} = this.state;
+ 
 
     if (selected.length === 0) { // selecting a first card
       this.setState({ selected: [clickedIndex] })
     } else if (selected.length === 1) { // they're selecting a second card
-      if (cards[selected[0]] === cards[clickedIndex]) {
+      if (cards[selected[0]].country === cards[clickedIndex].country) {
         // It's a match :)
         // Add selected cards to `correct` and reset selection
+       
         this.setState({
             correct: correct.concat([selected[0], clickedIndex]),
             selected: []
@@ -59,7 +42,7 @@ class MemoryGame extends Component {
       } else {
         // It's not a match :(
         // Select it for now, and reset selection in a bit
-        this.setState({ selected: [selected[0], clickedIndex] });
+        this.setState({ selected: [selected[0], cards[clickedIndex].country] });
         setTimeout(() => {
           this.setState({ selected: [] })
         }, 1500);
@@ -77,7 +60,7 @@ class MemoryGame extends Component {
           {cards.map((image, i) => (
             <MemoryCard
               key={i}
-              image={imageLinks[i]}
+              image={cards[i].imagelink}
               countryName={cards[i].country}
               isCorrect={correct.includes(i)}
               isSelected={selected.includes(i)}
@@ -108,6 +91,7 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => 
       srcSet={image}
       alt={countryName}
     />
+    <p style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }} class="nametest">Test!</p>
   </div>
 );
 
