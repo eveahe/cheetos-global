@@ -42,10 +42,16 @@ img {
 }
 
 .nametest{
+  max-width: 100%;
   position: relative;
   z-index: 3;
   background: transparent; 
-  color: red;
+  color: Chartreuse;
+  margin-top: -40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2em;
+  
 }
 
 @media all and (min-width: 1000px) {
