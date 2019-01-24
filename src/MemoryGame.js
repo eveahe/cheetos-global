@@ -4,6 +4,8 @@ import './MemoryGame.css';
 // import the cards from a json list
 import data from "./data.json";
 
+import {shuffleArray} from "./shuffle.js"
+
 
 class MemoryGame extends Component {
   constructor(props) {
@@ -91,17 +93,11 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => 
       srcSet={image}
       alt={countryName}
     />
-    <p style={{ visibility: (isCorrect || isSelected) ? 'visible' : 'hidden' }} className="nametest">Test!</p>
+    <p // This displays the country name of the cheetos if there is a match. 
+      style={{ visibility: (isCorrect) ? 'visible' : 'hidden' }} className="nametest">{countryName}</p>
   </div>
 );
 
-// Probably in a different file
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+
 
 export default MemoryGame;
