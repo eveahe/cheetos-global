@@ -44,7 +44,7 @@ class MemoryGame extends Component {
       } else {
         // It's not a match :(
         // Select it for now, and reset selection in a bit
-        this.setState({ selected: [selected[0], cards[clickedIndex].country] });
+        this.setState({ selected: [selected[0], clickedIndex] });
         setTimeout(() => {
           this.setState({ selected: [] })
         }, 1500);
