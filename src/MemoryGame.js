@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
 
+// import Header from "./components/Header";
+
 // import the cards from a json list
 import data from "./data.json";
 
 import {shuffleArray} from "./shuffle.js"
+// import {MemoryCard} from './MemoryCard.js';
 
 
 class MemoryGame extends Component {
@@ -75,7 +78,6 @@ class MemoryGame extends Component {
   }
 }
 
-// Extracted into it's own component
 const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => (
   <div
     className="modal mui-panel"
@@ -97,6 +99,8 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => 
       style={{ visibility: (isCorrect) ? 'visible' : 'hidden' }} className="nametest">{countryName}</p>
   </div>
 );
+
+
 
 
 
