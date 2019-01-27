@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
-
 body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: monospace;
+  background-color: yellow;
 }
 
 .modal {
@@ -11,13 +9,16 @@ body {
   width: 100px;
   height: 100px;
   margin: 10px;
-  box-shadow: 10px 10px grey;
+  box-shadow: 10px 10px white;
 }
 
 h1 {
   font-size: 3rem;
   text-align: center;
   padding: 5px;
+  color: white;
+  text-shadow: 2px 2px pink;
+  margin-bottom: 10px;
 }
 
 img {
@@ -54,9 +55,11 @@ img {
   margin-top: -40px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1em;
+  background-color: #ffc0cb;
   
 }
+
+
 
 @media all and (min-width: 1000px) {
   .modal {

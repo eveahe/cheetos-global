@@ -3,11 +3,13 @@ import './MemoryGame.css';
 
 // import Header from "./components/Header";
 
+
 // import the cards from a json list
 import data from "./data.json";
 
 import {shuffleArray} from "./shuffle.js"
 // import {MemoryCard} from './MemoryCard.js';
+
 
 
 class MemoryGame extends Component {
@@ -73,7 +75,7 @@ class MemoryGame extends Component {
             />
           ))}
         </div>
-      </div>
+      </div> 
     );
   }
 }
