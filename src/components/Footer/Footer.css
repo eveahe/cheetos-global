@@ -1,4 +1,7 @@
 footer {
+  padding-top: 20px;
   height: 30px;
   margin-top: 50px;
+  border-top: 2px solid chartreuse;
+  color: black;
 }
