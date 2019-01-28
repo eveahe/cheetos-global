@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './MemoryGame.css';
 
 // import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 
 // import the cards from a json list
 import data from "./data.json";
 
 import {shuffleArray} from "./shuffle.js"
-// import {MemoryCard} from './MemoryCard.js';
+
 
 
 
@@ -63,6 +64,7 @@ class MemoryGame extends Component {
     return (
       <div>
         <h1>check your cheetos</h1>
+        <h3>Click a card to reveal. Can you match cheesy puffs from the same country?</h3>
         <div className="mui-panel wrapper">
           {cards.map((image, i) => (
             <MemoryCard
@@ -75,6 +77,7 @@ class MemoryGame extends Component {
             />
           ))}
         </div>
+        <Footer />
       </div> 
     );
   }

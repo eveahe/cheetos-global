@@ -1,11 +1,11 @@
 import React from "react";
 import "./Footer.css";
 
-// set the footer to a copyright string
+// Setting the content of the footer
 const Footer = props => (
-  <div className="footer">
-    <p>Test</p>
-  </div>
+  <footer>
+    <p>All cheetos and assorted cheesy puffs are (sadly) not my property, but property of their respective chip owners.</p>
+  </footer>
 );
 
 export default Footer;
