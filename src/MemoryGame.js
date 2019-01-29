@@ -23,7 +23,8 @@ class MemoryGame extends Component {
       cards: shuffleArray(data),
       selected: [], // indexes which have been selected
       correct: [], // indexes which have been guessed correctly
-      data: null
+      data: null,
+      finished: false
     };
     
   }
@@ -33,7 +34,7 @@ class MemoryGame extends Component {
 
   onCardClick(clickedIndex) {
     //var countryCheck  = cards[clickedIndex].country
-    const { selected, cards, correct} = this.state;
+    const { selected, cards, correct, finished} = this.state;
  
 
     if (selected.length === 0) { // selecting a first card
@@ -42,11 +43,22 @@ class MemoryGame extends Component {
       if (cards[selected[0]].country === cards[clickedIndex].country) {
         // It's a match :)
         // Add selected cards to `correct` and reset selection
-       
         this.setState({
             correct: correct.concat([selected[0], clickedIndex]),
             selected: []
         });
+        
+        // check if the game is finished
+       if(correct.length === cards.length){
+          console.log("this is a test")
+          this.setState({
+            finished: true
+          })
+        } else {
+          console.log("The length of correct is " + correct.length)
+          console.log("The length of cards is " +  cards.length)
+        }
+        
       } else {
         // It's not a match :(
         // Select it for now, and reset selection in a bit
@@ -104,6 +116,8 @@ const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => 
       style={{ visibility: (isCorrect) ? 'visible' : 'hidden' }} className="nametest">{countryName}</p>
   </div>
 );
+
+
 
 
 
