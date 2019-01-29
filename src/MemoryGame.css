@@ -18,7 +18,7 @@ h1 {
   padding: 5px;
   color: black;
   margin-bottom: 10px;
-  background-color: rgba(127,255,0, .3);
+  background-color: chartreuse;
 }
 
 h3 {
@@ -61,7 +61,10 @@ img {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.7em;
-  background-color: rgba(127,255,0, .3);
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 2px;
+  background-color: chartreuse;
   
 }
 
