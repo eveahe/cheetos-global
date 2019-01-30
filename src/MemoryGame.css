@@ -68,6 +68,11 @@ img {
   
 }
 
+.gameState{
+  color: blue;
+  text-transform: uppercase;
+  font-size: 3em;
+}
 
 
 @media all and (min-width: 1000px) {
