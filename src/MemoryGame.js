@@ -67,7 +67,7 @@ class MemoryGame extends Component {
       // check if the game is complete!
       if(correct.length === cards.length){
           gameStatus = <div className='gameState'>
-                    <div>GAME COMPLETE!</div>
+                    <div>CHEETOS, CHECKED!</div>
                 </div>
               }
         
@@ -76,7 +76,7 @@ class MemoryGame extends Component {
     return (
       <div>
         <h1>check your cheetos</h1>
-        <h3>Click a card to reveal. Can you match cheesy puffs from the same country?</h3>
+        <h3>Match together deliciously puffed & fried corn snacks from the same country of origin!!!</h3>
         <marquee>
           {gameStatus}
         </marquee>
@@ -92,6 +92,9 @@ class MemoryGame extends Component {
             />
           ))}
         </div>
+        <marquee>
+          {gameStatus}
+        </marquee>
         <Footer />
       </div> 
     );
