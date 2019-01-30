@@ -4,4 +4,25 @@ footer {
   margin-top: 50px;
   border-top: 2px solid chartreuse;
   color: black;
+  text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid chartreuse;
+    box-shadow: 0px -4px 0px chartreuse inset;
+}
+
+a:hover {
+    background-color: chartreuse;
+  }
+
+a:visited {
+    color: black;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
