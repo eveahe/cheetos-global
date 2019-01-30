@@ -17,14 +17,11 @@ class MemoryGame extends Component {
   constructor(props) {
     super(props);
 
-    // You can simplify your state a lot
     this.state = {
-      // cards: shuffleArray(imageLinks.slice()),
       cards: shuffleArray(data),
       selected: [], // indexes which have been selected
       correct: [], // indexes which have been guessed correctly
-      data: null,
-      finished: false
+      data: null
     };
     
   }
@@ -34,7 +31,7 @@ class MemoryGame extends Component {
 
   onCardClick(clickedIndex) {
     //var countryCheck  = cards[clickedIndex].country
-    const { selected, cards, correct, finished} = this.state;
+    const { selected, cards, correct} = this.state;
  
 
     if (selected.length === 0) { // selecting a first card
@@ -48,16 +45,6 @@ class MemoryGame extends Component {
             selected: []
         });
         
-        // check if the game is finished
-       if(correct.length === cards.length){
-          console.log("this is a test")
-          this.setState({
-            finished: true
-          })
-        } else {
-          console.log("The length of correct is " + correct.length)
-          console.log("The length of cards is " +  cards.length)
-        }
         
       } else {
         // It's not a match :(
@@ -70,13 +57,29 @@ class MemoryGame extends Component {
     }
     // Otherwise they already have 2 selected and we don't wanna do anything
   }
+  
+
 
   render() {
     const { correct, selected, cards } = this.state;
+    let gameStatus = <div className='gameState'></div>;
+    
+      // check if the game is complete!
+      if(correct.length === cards.length){
+          gameStatus = <div className='gameState'>
+                    <div>GAME COMPLETE!</div>
+                </div>
+              }
+        
+        
+    
     return (
       <div>
         <h1>check your cheetos</h1>
         <h3>Click a card to reveal. Can you match cheesy puffs from the same country?</h3>
+        <marquee>
+          {gameStatus}
+        </marquee>
         <div className="mui-panel wrapper">
           {cards.map((image, i) => (
             <MemoryCard
