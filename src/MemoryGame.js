@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './MemoryGame.css';
 
-// import Header from "./components/Header";
+// importing the Footer as a separate component. 
 import Footer from "./components/Footer";
 
 
 // import the cards from a json list
 import data from "./data.json";
 
+// Importing the function to shuffle the array of cheetos. 
 import {shuffleArray} from "./shuffle.js"
 
 
@@ -30,13 +31,13 @@ class MemoryGame extends Component {
 
 
   onCardClick(clickedIndex) {
-    //var countryCheck  = cards[clickedIndex].country
     const { selected, cards, correct} = this.state;
  
 
     if (selected.length === 0) { // selecting a first card
       this.setState({ selected: [clickedIndex] })
     } else if (selected.length === 1) { // they're selecting a second card
+      // We're here comparing the county of each of them. The images are not compared.
       if (cards[selected[0]].country === cards[clickedIndex].country) {
         // It's a match :)
         // Add selected cards to `correct` and reset selection
@@ -55,7 +56,7 @@ class MemoryGame extends Component {
         }, 1500);
       }
     }
-    // Otherwise they already have 2 selected and we don't wanna do anything
+    // Otherwise they already have 2 selected and we don't want to do anything
   }
   
 
@@ -70,8 +71,7 @@ class MemoryGame extends Component {
                     <div>CHEETOS, CHECKED!</div>
                 </div>
               }
-        
-        
+             
     
     return (
       <div>
@@ -101,6 +101,8 @@ class MemoryGame extends Component {
   }
 }
 
+// This should probably be it's own component, but thats a step 2 rework for me. 
+// The cheeto image has a higher z-index than the background. It is set as visible if the card isCorrect or isSelected
 const MemoryCard = ({ image, isSelected, isCorrect, onSelect, countryName }) => (
   <div
     className="modal mui-panel"
